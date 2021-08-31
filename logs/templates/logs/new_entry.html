@@ -1,0 +1,12 @@
+{% extends 'logs/base.html' %}
+{% block content%}
+
+<h3>Add a new Entry for topic named '{{topic}}' </h3>
+<p>Back to  <a href="{% url 'logs:topic' topic.id %}">{{ topic }}</a></p>
+<form action="{% url 'logs:new_entry' topic.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Entry</button>
+</form>
+
+{% endblock %}
